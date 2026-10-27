@@ -1,6 +1,6 @@
 # The heat price of precision
 
-Seth Douglas and Nidhal Mghirbi. Version 1.0.0, October 2026.
+Seth Douglas and Nidhal Mghirbi. Version 1.0.0, October 2026. DOI: [10.5281/zenodo.23701732](https://doi.org/10.5281/zenodo.23701732).
 
 The paper asks when the entanglement needed for precise nonlocal-game play becomes heat. For fixed games whose usable-entanglement demand diverges, local reset before communication forces divergent work, while quantum reunion before reset permits bounded operating work. The manuscript proves the sharp leading law for the imported game family, a quantum/classical block-recovery tradeoff, an exact-matching sector theorem, and a four-unit magic-square cycle.
 

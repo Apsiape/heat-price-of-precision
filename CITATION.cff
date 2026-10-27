@@ -3,6 +3,7 @@ message: "Please cite the paper; this repository supplies its LaTeX source and i
 type: software
 title: "The heat price of precision"
 version: 1.0.0
+doi: "10.5281/zenodo.23701732"
 date-released: 2026-10-27
 repository-code: "https://github.com/Apsiape/heat-price-of-precision"
 authors:
@@ -29,4 +30,5 @@ preferred-citation:
       given-names: Nidhal
   year: 2026
   version: 1.0.0
+  doi: "10.5281/zenodo.23701732"
   notes: "Preprint. Text CC BY 4.0; code MIT; see RIGHTS.md."
