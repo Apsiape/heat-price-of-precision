@@ -1,0 +1,15 @@
+The heat price of precision -- finite verification
+Python 3.13.12; NumPy 2.4.3; SciPy 1.17.1
+Platform Windows-11-10.0.26200-SP0; seed 20261027; tolerance 3e-09
+Numerical pools [{"user_api": "blas", "internal_api": "openblas", "num_threads": 1, "prefix": "libscipy_openblas", "filepath": "C:\\Users\\PC\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-4bb64bb73b19ae7523581172b5c4a821.dll", "version": "0.3.31.dev", "threading_layer": "pthreads", "architecture": "Haswell"}, {"user_api": "blas", "internal_api": "openblas", "num_threads": 1, "prefix": "libscipy_openblas", "filepath": "C:\\Users\\PC\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-64eda39e79589aedb16f58e5547eb599.dll", "version": "0.3.30", "threading_layer": "pthreads", "architecture": "Haswell"}]
+PASS erasure and CHSH: 101 probabilities, all marginals and endpoints
+PASS magic square: nine contexts, all raw outcomes, rank-one bases; working-register entropy budget 4
+PASS recovery: 567 integer budgets, explicit density matrices through three Bell pairs, fractional LPs
+PASS sectors: 60 LP menus, two-support optima, dual certificates, concavity and coherent core
+PASS access: W uniqueness support and positive surcharge; fixed controls through dimension 32
+PASS weighted observers and multiphase: noncommuting probes, explicit commutators, 120 clock dimensions
+PASS finite-reservoir entropy-production identity: 30 arbitrary unitaries
+PASS pure-state cut entropies and finite-error conversion: 50 pure cut tests, 26 extracted-state tests
+Peak working set MiB: 79.13
+PASS assertions: 6378; negative controls caught: 5
+These finite checks do not replace the written proofs or verify imported asymptotic theorems.

@@ -1,0 +1,74 @@
+\section{Exactly matched controls and sector allocation}\label{sec:sectors}
+The schedule states what can be controlled jointly and when. The tests state which correlations a successful preparation must carry. Exact matching makes the latter requirement explicit. It is more restrictive than small game loss.
+
+Let $\mathcal A$ be a unital $*$-algebra of finitely many bounded controls, with any exact projective or unitary relations declared. Let $h=\sum_aw_aR_a^*R_a$, $w_a>0$, be a positive defect element. For a finite-dimensional irreducible representation $\pi$ write
+\[
+ \ell_\pi=\frac{\Tr\pi(h)}{\dim\pi},\qquad c_\pi=\log_2\dim\pi.
+\]
+The two parties carry opposite representations. For self-adjoint generators, \emph{exact matching} means
+\begin{equation}
+ (A_s\otimes I-I\otimes B_s)\rho_{AB}^{1/2}=0.\label{eq:match}
+\end{equation}
+For unitaries impose the equations for the generators and their adjoints, with Bob's transpose supplying the opposite algebra. Define, over finite allocations,
+\begin{equation}
+ f(\eps)=\inf\left\{\sum_jp_jc_{\pi_j}:\ p_j\ge0,\ \sum_jp_j=1,
+                       \ \sum_jp_j\ell_{\pi_j}\le\eps\right\}.\label{eq:sectorlp}
+\end{equation}
+
+\begin{theorem}[\proved: allocation of finite sectors]\label{thm:sectors}
+Among finite exactly matched states with defect at most $\eps$,
+\begin{align}
+ \inf\ED(\rho)&=f(\eps),\label{eq:sectored}\\
+ \inf I(A:B)_\rho&=\inf_{p,\pi}\left[H(p)+2\sum_jp_jc_{\pi_j}\right]=:C_{\rm ex}(\eps).
+ \label{eq:sectormi}
+\end{align}
+Both infima can be approached with at most two sectors, and
+\begin{equation}
+ 2f(\eps)\le C_{\rm ex}(\eps)\le2f(\eps)+1.\label{eq:sectorbounds}
+\end{equation}
+If arbitrarily small positive losses are feasible, then, for $\eps>0$,
+\begin{equation}
+ f(\eps)=\sup_{\lambda\ge0}\left[
+       \inf_\pi(c_\pi+\lambda\ell_\pi)-\lambda\eps\right].\label{eq:sectordual}
+\end{equation}
+\end{theorem}
+\begin{proof}
+For a support vector of $\rho$, write its coefficient matrix as $X:\overline{\mathcal H_B}\to\mathcal H_A$. Matching gives $A_sX=XB_s^T$ for all generators and adjoints. Finite-dimensional $*$-representations decompose into irreducibles. Schur's lemma gives
+\[
+ X=\bigoplus_j I_{V_j}\otimes X_j
+\]
+on the common equivalent sectors, with multiplicity spaces on each side. Thus the support lies in $\bigoplus_j\ket{\Phi_{n_j}}\otimes K_j^A\otimes K_j^B$, where $n_j=\dim V_j$. Both parties can locally measure the common label and discard their multiplicities, obtaining
+\begin{equation}
+ \omega=\bigoplus_jp_j\ket{jj}\bra{jj}\otimes\Phi_{n_j}.\label{eq:core}
+\end{equation}
+Every tested statistic is preserved: controls are block diagonal, act trivially on multiplicities, and on $\Phi_{n_j}$ their marginal is $I_{n_j}/n_j$. This is the finite trace structure familiar from synchronous correlations~\cite{psstw}; the resource comparison uses the explicit local reduction above.
+
+The label is locally readable on both sides, so typical frequencies of labels and entanglement concentration give $\ED(\omega)\ge\sum_jp_j\log_2n_j$. For the converse use the separable competitor obtained by replacing each $\Phi_n$ by $n^{-1}\sum_k\ket{kk}\bra{kk}$. Its relative entropy from $\omega$ is exactly $\sum_jp_j\log_2n_j$. On $N$ copies the product competitor has $N$ times this value. Data processing and the maximally entangled projection test used in the proof of~\eqref{eq:secondreturn} bound every distillation rate by it. Hence equality holds. Direct calculation gives
+\[
+ S(\omega_A)=S(\omega_B)=H(p)+\sum_jp_j\log_2n_j,\quad S(\omega)=H(p),
+\]
+and therefore $I(A:B)_\omega=H(p)+2\sum_jp_j\log_2n_j$. Local channels cannot increase either resource. This gives lower bounds on the original mixed state, rather than only on a replacement state. Conversely every finite allocation is realized by~\eqref{eq:core} with blockwise controls. Its defect is the tracial average $\sum_jp_j\ell_{\pi_j}$. This proves~\eqref{eq:sectored}--\eqref{eq:sectormi}.
+
+For a fixed finite menu, feasible weights form a compact polytope with normalization and one loss inequality. Every vertex has at most two nonzero coordinates. The entanglement objective is linear and the mutual-information objective is concave. Each has some vertex with value no greater than any prescribed feasible weight vector: express that vector as a convex combination of vertices and use linearity or concavity. Apply this to each finite menu and then take infima. Since a binary label has entropy at most one,~\eqref{eq:sectorbounds} follows.
+
+Every $\lambda\ge0$ gives the lower bound in~\eqref{eq:sectordual} by averaging $c_\pi+\lambda\ell_\pi$. For the reverse, $f$ is finite, convex and nonincreasing on $(0,\infty)$: feasibility at smaller positive losses guarantees finiteness there, and mixing finite allocations proves convexity. A subgradient $s\le0$ at $\eps$ exists. Put $\lambda=-s$. Since $c_\pi\ge f(\ell_\pi)$, the supporting line gives $c_\pi+\lambda\ell_\pi\ge f(\eps)+\lambda\eps$. A zero-loss sector can be handled by taking the limit from positive losses. Infimize over $\pi$ to obtain the reverse bound.
+\end{proof}
+
+For synchronous POVMs, perfect agreement on the same question implies~\eqref{eq:match}. Indeed, for corresponding effects $A,B$, the agreement equalities give $\Tr\rho A=\Tr\rho B=\Tr\rho(A\otimes B)$. Since $A^2\le A$ and $B^2\le B$, the expectation of $(A\otimes I-I\otimes B)^2$ is at most zero. It is nonnegative, so vanishes; equality also makes the effects projections on their marginal supports. For a synchronous game with projections $p_x^a$, take
+\[
+ h_G=\sum_{\text{losing }x,y,a,b}\mu(x,y)p_y^bp_x^ap_y^b.
+\]
+Its normalized trace is exactly the game loss. Theorem~\ref{thm:local} restricted to this class and~\eqref{eq:sectorbounds} give $w_{\rm local,ex}=2f+O_G(1)$ and $w_{\rm joint,ex}=O_G(1)$.
+
+\begin{corollary}[\proved: finite-dimensional obstruction]\label{cor:compact}
+Suppose the admissible bounded matrix tuples in each dimension form a closed set and no finite-dimensional sector has zero defect. For the minimum tracial defect $\delta_D$ over dimensions at most $D$,
+\[
+ f(\eps)\ge\sup_D\pos{1-\eps/\delta_D}\log_2(D+1),
+ \qquad f(\eps)\longrightarrow\infty.
+\]
+\end{corollary}
+\begin{proof}
+The finite union of admissible matrix-tuple sets is compact. Its nonnegative continuous defect has a positive minimum, for zero defect would give a forbidden representation. A feasible allocation puts weight at most $\eps/\delta_D$ in dimensions at most $D$. The remaining weight costs at least $\log_2(D+1)$. First send $\eps$ to zero for fixed $D$, then let $D$ grow.
+\end{proof}
+
+If an enlarged algebra $\mathcal B$ has unital $*$-homomorphisms $i:\mathcal A\to\mathcal B$ and $r:\mathcal B\to\mathcal A$ with $ri=\mathrm{id}$ and defect $i(h)$, restriction along $i$ and extension along $r$ preserve states, matching and tested statistics. The two directions give equality of all resource infima. This proves that an untested spectator with such a retraction adds no price. Exact matching is essential; Appendix~\ref{app:rounding} explains the stability gap.

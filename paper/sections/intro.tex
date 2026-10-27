@@ -1,0 +1,27 @@
+\section{The question and the operating cycle}\label{sec:model}
+How much heat must a pair of devices discharge to play one fixed nonlocal game almost perfectly? Some finite games need an increasing amount of usable entanglement as their loss approaches zero. That fact alone does not set a heat cost. The devices may keep their correlations until they can act jointly, or they may have to erase each half while its partner is inaccessible. This paper asks what that reset deadline changes.
+
+There are three takeaways. Local reset converts a sharp entanglement demand into a sharp work law. Quantum reunion before reset removes its divergence, whereas classical recovery removes only one of the two leading units. Exact matching provides a sector formula for the correlations that are priced; approximate matching needs additional stability estimates.
+
+The entanglement laws are inputs, not results reproved here. Douglas and Mghirbi~\cite[Theorem 11.9 and Corollary 11.11]{precision} give fixed games with pure entanglement entropy at most $\alpha\log_2(1/\eps)+O_G(1)$ and one-way distillable entanglement demand at least $\alpha\log_2(1/\eps)-O_G(\log\log(1/\eps))$. Their explicit companion~\cite{explicit} supplies an exponential-dimension example. We use the schedule contract of the published time-order papers~\cite{order,waiting,realtime,clock}, whose general work law for schedules is~\cite[Theorem 1 and Appendix B, Theorem 7]{order}. The entropy arguments below establish the bounds used here directly and do not use that law.
+
+\paragraph{Thermodynamic contract.}
+All entropies and relative entropies are in bits. Write $h_2(t)=-t\log_2t-(1-t)\log_2(1-t)$, with $0\log_2 0=0$, and $w=W/(k_BT\ln2)$, positive for work supplied. Every logical carrier has zero Hamiltonian at its endpoints. Controllers return, and batteries finish without entropy or correlations that could store information. Baths initially are independent Gibbs stocks at one temperature. Every discarded record belongs to the accounting. A reset means return to the specified pure blank, decoupled from all other systems.
+
+A round begins with pure product working blanks. A station with joint access prepares a finite state $\rho_{AB}$ before questions $(X,Y)$, sampled from the game's fixed distribution $\mu$ independently of the preparation and the baths, arrive. Its environment then becomes inaccessible. Every register the players can use belongs to $A$ or $B$. There is no uncharged shared catalyst. Alice and Bob receive independent thermal answer carriers $I_m/m$ and $I_n/n$. Let $K=mn$. Question labels remain available as unchanged local classical controls through reset. Classical answers leave permanently; the referee gives no reset assistance.
+
+In the \emph{local} schedule no communication is allowed until both working devices are blank. In the \emph{joint} schedule the residual devices can reunite quantum mechanically after answer release and before reset. Recovery communication between these endpoints is treated in Section~\ref{sec:recovery}.
+
+\paragraph{Limits and resources.}
+Fix a finite strategy and $\eps$ first. Its thermodynamic work is the reversible rate on independent copies, with whole-block error tending to zero, all entropy and energy return errors $o(N)$, and declared hardware. Then optimize over strategies, and only then let $\eps\downarrow0$. Local compression across copies within a laboratory is allowed. The ban on communication persists across the entire local reset block. This convention does not assert additivity of entanglement demand for arbitrary correlated multiround strategies. Initial blank hardware is startup capital; its preparation is not charged again each round. The full operating cycle restores it.
+
+For a game $G$ and a loss that is attainable in finite dimension, define
+\begin{align}
+ d_G(\eps)&=\inf_{\mathrm{loss}\le\eps}\ED(\rho_{AB}),&
+ E_G(\eps)&=\inf_{\substack{\mathrm{loss}\le\eps\\\rho\ \mathrm{pure}}}S(\rho_A),\label{eq:demands}\\
+ C_G(\eps)&=\inf_{\mathrm{loss}\le\eps}I(A:B)_\rho,&
+ I(A:B)&=S(A)+S(B)-S(AB).
+\end{align}
+The infima include arbitrary finite dimensions and mixed strategies where indicated. Let $D_G(\eps)$ be the minimum possible maximum local dimension. All mathematical assertions labelled \proved\ have a proof below or an exact imported theorem citation. Experimental implementations are labelled \textsc{Sketch}; the missing stability extension is labelled \textsc{Conjecture}.
+
+Work equals the total heat delivered to the baths in this zero-endpoint-energy model, since energy conservation gives $W=\Delta U+Q_{\rm bath}$ and $\Delta U=0$. This equality does not extend to arbitrary nondegenerate devices.

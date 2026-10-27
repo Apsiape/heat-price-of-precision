@@ -1,0 +1,72 @@
+\section{Calibration and a finite game floor}\label{sec:calibration}
+\begin{proposition}[\proved: the erasure calibration]\label{prop:calibration}
+Let $0\le p\le1/2$, $E=h_2(p)$, and give three sources the same marginals $\rho_A=\rho_B=\operatorname{diag}(1-p,p)$:
+\[
+ \ket{\psi_p}=\sqrt{1-p}\ket{00}+\sqrt p\ket{11},\quad
+ \rho_C=(1-p)\ket{00}\bra{00}+p\ket{11}\bra{11},\quad
+ \rho_P=\rho_A\otimes\rho_B.
+\]
+Erasing $A$ while preserving $B$ costs, respectively, $-E,0,E$ with joint access to $B$, and $E,E,E$ after $B$ is inaccessible. The release penalties are $2E:E:0$, equal to their mutual informations. For the specified pure family its optimal CHSH value $\mathcal B$ determines the penalty as
+\[
+ \Delta w=2h_2\left(\frac{1-\sqrt{2-\mathcal B^2/4}}2\right).
+\]
+\end{proposition}
+\begin{proof}
+The final joint entropy is $E$ and the three initial joint entropies are $0,E,2E$, giving the held lower bounds. They are attained by, respectively, unitarily making $\psi_p$ a product blank and reversibly mixing $B$, a CNOT from $B$ to $A$, and ordinary erasure of the product $A$. If the classical source has an external purifier, dephase $B$ after the CNOT to restore its original reference marginal. For the quantum source no such reference is present, and the product operation preserves all external correlations of $B$. After release only the identical marginal of $A$ is available, giving cost $E$ in all cases. These are elementary instances of conditional erasure~\cite{delrio}.
+
+Set $s=2\sqrt{p(1-p)}$. The correlation matrix of $\psi_p$ is $T=\operatorname{diag}(s,-s,1)$. The observables
+\[
+ A_0=Z,\quad A_1=X,\quad
+ B_0=(Z+sX)/\sqrt{1+s^2},\quad B_1=(Z-sX)/\sqrt{1+s^2}
+\]
+give $\mathcal B=2\sqrt{1+s^2}$. For optimality, write the sum and difference of Bob's two unit directions as $2\cos\phi\,u$ and $2\sin\phi\,v$ with $u\perp v$. Optimizing Alice and then $\phi$ gives at most $2\sqrt{\norm{Tu}^2+\norm{Tv}^2}\le2\sqrt{1+s^2}$; this is the argument of the Horodecki criterion~\cite{horodeckichsh}. Extremal nonconstant qubit observables have such directions; a constant observable gives no violation. Solving for $p$ proves the formula. An unrestricted mixed device with the same score need not have this work cost.
+\end{proof}
+
+\begin{proposition}[\proved: a paired precision experiment]\label{prop:paired}
+Use the same pure source of entropy $E$ and the same coherent measurement and copy implementation in two arms. Release the same answers, then reset the residual devices locally in one arm and jointly in the other. Their optimal reversible reset-work difference is
+\begin{equation}
+ \Delta w=\sum_{xy}\mu(x,y)I(A':B')_{\sigma^{xy}},\qquad
+ 2E-\log_2K\le\Delta w\le2E.\label{eq:paired}
+\end{equation}
+Thus the flat strategies supplied by~\cite[Theorem 11.9(b)]{precision} give $\Delta w=2\alpha L+O_G(1)$.
+\end{proposition}
+\begin{proof}
+At fixed questions local reset costs $S(A')+S(B')$, while joint reset costs $S(A'B')$. No signalling makes each local marginal independent of the other question. This proves the averaged equality. The retained joint state has at most $K$ orthogonally flagged pure branches, so $S(A'B')\le\log_2K$. Each local retained state is an isometric image of its source marginal followed by pinching, which cannot decrease entropy, so both local entropies are at least $E$. Conversely the retained state comes from the source by local channels; mutual-information data processing bounds it by $2E$. Preparation and answer-port work cancel between the arms.
+\end{proof}
+
+\begin{theorem}[\proved: the magic-square floor]\label{thm:magic}
+For the standard uniform row-column binary magic-square game, with four parity-allowed answers for each question and thermal four-dimensional answer ports,
+\[
+ w_{\rm local,MS}(0)=4.
+\]
+\end{theorem}
+\begin{proof}
+First dilate all local POVMs to projective measurements on finite local extensions initialized in pure product ancillas. This preserves the score and the one-way distillable entanglement in either direction, since appending or discarding a pure local ancilla is a local operation. It therefore suffices to prove the lower bound for these dilated measurements.
+
+Perfect intersection agreement makes the corresponding row and column reflections agree on every support vector. The marginal supports are invariant under them, because moving a reflection to the other party in a purification leaves its marginal invariant. Row parity and row commutation hold by the joint projective measurement; the column relations transfer from Bob using the mirrors. Thus on Alice's support they represent the magic-square solution group with marked element $J=-I$. Its identification with the two-qubit Pauli group is~\cite[Proposition 6.10]{cs}. Its $J=-I$ representations are copies of the four-dimensional irreducible: one anticommuting reflection pair gives $X,Z$ on one qubit by diagonalizing $Z$ and pairing its eigenspaces with $X$, and the commuting second pair gives another such qubit on the multiplicity space. The same holds on Bob. Matching then has the Schur form in the proof of Theorem~\ref{thm:sectors}; it locally extracts $\Phi_4$ even from a mixed state. Hence $\ED\ge2$, and Theorem~\ref{thm:local} gives $w\ge4$. This also recovers the established two-singlet rigidity~\cite[Appendix C, Lemma C.1 and its application]{wu}.
+
+For attainment form $\Phi_4$ on two working qubits at each party by a global unitary. At each question rotate the local source into the required rank-one joint eigenbasis, swap its four-dimensional register into the thermal answer port, dephase that port in the answer basis and release it. The working register is now $I_4/4$ and can be erased at cost two. Both parties spend four units in total. The answer ports received the actual measured source; no pure answer blanks were supplied for free. All working registers return pure.
+\end{proof}
+
+\begin{proposition}[\proved: finite-error conversion]\label{prop:robust}
+Suppose local extraction from a strategy of loss $\eps$ gives a state $\omega$ on $\C^4\otimes\C^4$ with $\frac12\norm{\omega-\Phi_4}_1\le t_{\rm MS}(\eps)\le1/2$. Then
+\begin{equation}
+ w_{\rm local}(\eps)\ge
+ \max\{0,4-2t_{\rm MS}(\eps)\log_2 45-4h_2(t_{\rm MS}(\eps))\}.\label{eq:robust}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Writing $t=\frac12\norm{\omega-\Phi_4}_1$, finite-dimensional entropy continuity gives
+\[
+ S(\omega_B)\ge2-t\log_2 3-h_2(t),\qquad
+ S(\omega)\le t\log_2 15+h_2(t).
+\]
+The hashing inequality~\cite[Theorem 10]{dw} lower-bounds one-way distillation by their difference. Local extraction cannot increase $\ED$ of the original state. Apply Theorem~\ref{thm:local}. On $[0,1/2]$ the error expression is increasing, so replacing $t$ by its upper bound is valid; also use $w\ge0$.
+\end{proof}
+
+For the equation-variable binary magic-square game, Coladangelo--Stark~\cite[Definition 4.14 and Theorem 6.9, arXiv v2]{cs} supplies such an extraction modulus tending to zero, including mixed states. Divide their full trace-norm modulus by two before using~\eqref{eq:robust}. For the row-column game use~\cite[Appendix C, Lemma C.1 and equations (C18)--(C35), arXiv v2]{wu}: each context loss is at most the mean loss divided by the smallest question-pair probability, and for a mixed strategy the same local isometries, applied to a purification whose reference is left untouched, give an extraction channel once the junk is discarded. Each formulation uses its own modulus; no common numerical constant and no numerical score-to-heat threshold is asserted.
+
+\paragraph{\textnormal{\textsc{Sketch}}: laboratory realization.}
+Interleave game-calibration and erasure trials with independently calibrated sources, thermal ports and reset reservoirs. Compare the work difference in~\eqref{eq:paired}, or the four-unit ideal magic-square floor. A hardware-specific reversible control sequence, measured bath heat and reset of every controller record are still needed. The finite computations in \texttt{verify/} establish the algebra and entropy values, not experimental attainability.
+
+The coefficient $\alpha$ alone gives no accessible onset scale. Given $G$, test it with probability $p>0$ and otherwise ask a distinct dummy question with deterministic perfect answers. For $\eps<p$, restriction and extension of strategies give $d_{G_p}(\eps)=d_G(\eps/p)$ and $E_{G_p}(\eps)=E_G(\eps/p)$. The coefficient is unchanged. For $\eps\ge p$, a product strategy wins all dummy rounds and has total loss at most $p$. Since $p$ can be arbitrarily small with only a fixed increase in question types, an actual logarithmic experiment requires finite-error game constants. Also,~\eqref{eq:sharp} controls large relative precision changes: for fixed $r>1$, $[w_{\rm local}(\eps^r)-w_{\rm local}(\eps)]/L\to2\alpha(r-1)$. It does not control every halving increment.

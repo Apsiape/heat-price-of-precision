@@ -1,0 +1,16 @@
+__pycache__/
+paper/.build/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk
+paper/tmp/
+verify/tmp/
+verify/logs/build-pass-*.txt
+verify/logs/latex-final.log
+verify/logs/bibtex-final.log

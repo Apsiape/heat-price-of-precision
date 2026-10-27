@@ -1,0 +1,26 @@
+{
+  "title": "The heat price of precision",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "Douglas, Seth"
+    },
+    {
+      "name": "Mghirbi, Nidhal"
+    }
+  ],
+  "description": "<p>Does playing a nonlocal game more precisely require more heat? We study devices that start and finish in pure product blanks, receive thermal answer carriers, and release classical answers. The answer depends on when the devices may communicate again. If they reset locally first, their minimum cyclic work differs from the game's minimum mutual information by a bounded alphabet cost and is at least twice its one-way distillable entanglement demand. Published entanglement bounds therefore give fixed finite games with local work $2\\alpha\\log_2(1/\\varepsilon)+O(\\log\\log(1/\\varepsilon))$, for a dense set of coefficients $\\alpha$, including transcendental values. Quantum reunion before reset keeps the work bounded.\n\nWith coherent block recovery allowing $q$ qubits and $c$ dephased bits per play, the leading cost is $(\\alpha L-q)_++(\\alpha L-q-c)_+$, where $L=\\log_2(1/\\varepsilon)$. A relative-entropy potential proves the lower bound; compression proves the upper bound. An exact entropy-production identity records arbitrary schedules without solving their optimization. For exactly matched controls, a sector allocation theorem evaluates the entanglement and correlation costs. A W-state example shows why knowledge of accessible marginals cannot replace operational access. Perfect magic-square play has cyclic local work exactly four units. Work and bath heat agree at the zero-energy endpoints used here; one unit is $k_BT\\ln2$.</p>",
+  "license": "cc-by-4.0",
+  "keywords": [
+    "nonlocal games",
+    "entanglement",
+    "thermodynamics",
+    "erasure",
+    "quantum communication"
+  ],
+  "access_right": "open",
+  "language": "eng",
+  "notes": "Preprint. It has not been peer reviewed. Text CC BY 4.0; code MIT; see RIGHTS.md."
+}

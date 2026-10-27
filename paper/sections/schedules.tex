@@ -1,0 +1,40 @@
+\section{What an arbitrary schedule records}\label{sec:schedules}
+The next identity is standard entropy production~\cite{esposito,reebwolf}. Its use here fixes the complete boundary of a game cycle. It does not evaluate an optimization over causal implementations.
+
+\begin{proposition}[\proved: the complete entropy ledger]\label{prop:ledger}
+Let $R$ contain every nonbath carrier and reference being tracked, apart from an ideal entropy-preserving work battery. Independent reservoirs start in $\Gamma_E=\bigotimes_j\gamma_{E_j}$, initially independent of $R$. Assume unitary global evolution, a final decoupled battery of unchanged entropy, and vanishing endpoint interactions. For final state $\eta_{RE}$ define
+\[
+ A(\Pi)=D_2(\eta_{RE}\Vert\eta_R\otimes\Gamma_E).
+\]
+Then every physical implementation satisfies
+\begin{align}
+ w(\Pi)&=\frac{\Delta U_R}{k_BT\ln2}+S(R_i)-S(R_f)+A(\Pi),\label{eq:ledger}\\
+ A(\Pi)&=S(R_f)+\sum_jS(E_j)_f-S(RE)_f
+             +\sum_jD_2(\eta_{E_j}\Vert\gamma_{E_j}).\label{eq:tc}
+\end{align}
+For $r$ game plays with independent thermal ports, a classical question transcript $Q$, no additional input purifiers, and fully restored hardware,
+\begin{equation}
+ w(\Pi)=r\log_2K-H(O|Q)_\Pi+A(\Pi).\label{eq:gameledger}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Unitarity and the battery assumptions give $S(RE)_f=S(R_i)+S(\Gamma_E)$. Expanding the relative entropy and using the Gibbs formula gives
+\[
+ A=-S(RE)_f+S(R_f)+S(\Gamma_E)+\frac{Q_{\rm bath}}{k_BT\ln2}
+   =S(R_f)-S(R_i)+\frac{Q_{\rm bath}}{k_BT\ln2}.
+\]
+Energy conservation $W=\Delta U_R+Q_{\rm bath}$ proves~\eqref{eq:ledger}. Adding and subtracting $\sum_jS(E_j)_f$ proves~\eqref{eq:tc}. Initially the classical questions and thermal answer ports have entropy $H(Q)+r\log_2K$; finally the questions and classical answers have entropy $H(QO)$. Hardware is pure at both ends. This proves~\eqref{eq:gameledger}. For approximate return, include the controller energy, entropy and battery errors explicitly; their $o(r)$ budgets vanish in the stipulated rate. An arbitrary purifying observer instead requires the full boundary term in~\eqref{eq:ledger}.
+\end{proof}
+
+For a specified finite release and return schedule $\Sigma$, minimize~\eqref{eq:gameledger} over its admissible implementations and take precisely the same rate closure as for physical work. This yields the exact operational formula
+\begin{equation}
+ w_{\Sigma,G}(\eps)=\inf_{\Pi\ {\rm admissible}}
+ \frac{r\log_2K-H(O|Q)_\Pi+A(\Pi)}r.\label{eq:operational}
+\end{equation}
+Indeed the identity holds for every implementation, so it holds along every approximating sequence for either infimum. With $R_{\Sigma,G}=\inf_\Pi A(\Pi)/r$ and the same closure,
+\begin{equation}
+ R_{\Sigma,G}\le w_{\Sigma,G}\le R_{\Sigma,G}+\log_2K.\label{eq:reservoir}
+\end{equation}
+This follows from $0\le r\log_2K-H(O|Q)\le r\log_2K$, before taking infima.
+
+Reservoirs in~\eqref{eq:tc} can hold correlations with each other even when the final devices are blank. Their return is an information return and must be allowed by the schedule. Calling the optimization an exact formula does not supply a closed entropy expression for every schedule. In particular, the serial Werner--Holevo example of~\cite[Theorem 3 and Section 5]{waiting} rules out replacing a constrained implementation by a reversible batch implementation at each stage. The identity itself is credited to the entropy-production literature, rather than claimed as new.

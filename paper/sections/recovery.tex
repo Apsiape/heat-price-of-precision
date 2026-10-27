@@ -1,0 +1,109 @@
+\section{Quantum and classical return}\label{sec:recovery}
+After answer release, allow coherent local processing on $N$ independent copies of the chosen strategy. Recovery may transfer at most $Nq+o(N)$ qubits and $Nc+o(N)$ fully dephased bits in total, with an Alice-to-Bob route available for the construction. A quantum carrier of dimension $d$ uses $\log_2d$ qubits of capacity. Classical carriers are physically moved dephased registers. Blank communication hardware, flags, failed branches and copied messages all enter the work ledger; no pure message register or entangled pair is free. Questions are local controls as in Section~\ref{sec:model}. This model allows compression before transfer and imposes the blank deadline after the recovery block.
+
+Let
+\[
+ F(e;q,c)=\pos{e-q}+\pos{e-q-c},\qquad
+ B_G=\log_2(|X||Y|K).
+\]
+\begin{theorem}[\proved: the recovery tradeoff]\label{thm:return}
+In this block model, for $q,c\ge0$,
+\begin{equation}
+ F(d_G(\eps);q,c)\le w_{q,c,G}(\eps)
+ \le F(E_G(\eps);q,c)+4B_G.\label{eq:return}
+\end{equation}
+For the games of Corollary~\ref{cor:sharp}, uniformly over $q,c\ge0$,
+\begin{equation}
+ w_{q,c,G}(\eps)
+ =\pos{\alpha L-q}+\pos{\alpha L-q-c}+O_G(\log L).
+ \label{eq:returnsharp}
+\end{equation}
+\end{theorem}
+
+At fixed total dimension, the potential below is the complement of $S+\ER$. Horodecki and collaborators show that $S+\ER$ cannot decrease under closed local operations, including transfer of dephased registers, and use this to bound the work deficit and the cost of erasing entanglement~\cite[Theorems 2 and 3 and the proof of Theorem 3]{localnonlocal}. The proof below adds the disposal of independent local Gibbs baths and a charged quantum-transfer bound for the present cycle.
+
+\begin{lemma}[\proved: a work and entanglement potential]\label{lem:potential}
+For degenerate bipartite hardware set
+\[
+ M(\rho)=\log_2\dim(AB)-S(\rho)-\ER(\rho),\qquad
+ \ER(\rho)=\inf_{\sigma\ {\rm separable}}D_2(\rho\Vert\sigma).
+\]
+A local thermal step supplied with $w$ work units increases $M$ by at most $w$. Moving an already classical register leaves $\ER$ unchanged and increases $M$ by zero. Moving a $d$-dimensional quantum register can increase $M$ by at most $\log_2d$.
+\end{lemma}
+\begin{proof}
+Append a local Gibbs bath $E$, and take the entanglement cut to be $AE:B$. For its final state $\eta$, the separable competitor $\sigma_{AB}\otimes\eta_E$ gives
+\begin{equation}
+ \ER(AE:B)_\eta-\ER(A:B)_\eta\le I(AB:E)_\eta.\label{eq:ERdiscard}
+\end{equation}
+This follows from
+$D_2(\eta_{ABE}\Vert\sigma_{AB}\otimes\eta_E)
+=D_2(\eta_{AB}\Vert\sigma_{AB})+I(AB:E)$,
+followed by taking the infimum. Write $F_2$ for relative entropy to the product Gibbs state; on $AB$ this is $\log_2\dim(AB)-S(AB)$. Then
+\[
+ F_2(ABE)=F_2(AB)+D_2(\eta_E\Vert\gamma_E)+I(AB:E).
+\]
+Combining this equality with~\eqref{eq:ERdiscard} shows that discarding a local bath cannot increase $F_2-\ER$. Appending that bath adds zero. Local unitary evolution preserves entanglement across $AE:B$; with an ideal local battery the change in relative free energy is the supplied work. This proves the thermal-step bound. Pure ancillas have their relative free energy charged, or are returned; they cannot circumvent it.
+
+For a dephased flag, the direct-sum formula is
+\[
+ \ER\left(\sum_zp_z\ket z\bra z\otimes\rho_z\right)
+       =\sum_zp_z\ER(\rho_z).
+\]
+To prove it, dephase any separable competitor in the flag basis. Its blocks remain separable. Relative entropy splits into $D(p\Vert r)+\sum_zp_zD(\rho_z\Vert\sigma_z)$, which is at least the right side; competitors with $r=p$ attain the infimum. This proof works with the flag at either party. Transfer changes neither global entropy nor total dimension, so it leaves $M$ unchanged. Dephasing a coherent message is a local physical step and is already subject to the work bound.
+
+Finally simulate the \emph{reverse} transfer of a $d$-dimensional quantum carrier by teleportation, using $\Phi_d$ and free classical communication for this mathematical comparison. LOCC monotonicity and a product separable competitor imply
+\[
+ \ER({\rm before})\le\ER({\rm after}\otimes\Phi_d)
+ \le\ER({\rm after})+\log_2d.
+\]
+Here $\ER(\Phi_d)=\log_2d$, by a separable diagonal competitor and the test onto $\Phi_d$, whose overlap with a separable state is at most $1/d$. Hence transfer can decrease $\ER$ by at most $\log_2d$, proving the potential bound. Teleportation in this argument is a comparison of cuts; it supplies no free ebits to the operating protocol.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:return}]
+First sum local entropy balances, including formation and thermal answer ports. Moving $C$ from Alice to Bob changes the sum of local entropies by
+\[
+ S(A)+S(BC)-S(AC)-S(B)=S(C|B)-S(C|A).
+\]
+Each conditional entropy lies in $[-\log_2\dim C,\log_2\dim C]$. For dephased $C$ both lie in $[0,\log_2\dim C]$. Communication can therefore remove at most $2Nq+Nc+o(N)$ of the local entropy burden. The nonnegative answer-port terms in the proof of Theorem~\ref{thm:local} give
+\begin{equation}
+ w\ge I(A:B)_\rho-2q-c\ge2\ED(\rho)-2q-c.\label{eq:firstreturn}
+\end{equation}
+
+For the second bound use Lemma~\ref{lem:potential} from the prepared state through measurement and recovery. Keep the classical outgoing answer registers on their original sides of the mathematical cut even after release. Subsequent operations act trivially on them. Their dephasing is a local step; their being inaccessible cannot improve a lower bound. The final state on this cut is separable: only pure blanks and classical outputs remain. The initial answer ports are thermal and independent. At fixed question transcript the increase in $M$ is
+\[
+ NS(\rho)+\ER(\rho^{\otimes N})
+      +N\log_2K-H(O|Q)
+ \ge NS(\rho)+\ER(\rho^{\otimes N}).
+\]
+The quantum transfers contribute at most $Nq+o(N)$. Formation contributes at least $-NS(\rho)$. Thus total work satisfies
+\begin{equation}
+ w\ge\ER^\infty(\rho)-q\ge\ED(\rho)-q.\label{eq:secondreturn}
+\end{equation}
+For clarity, the second inequality needs no unproved additivity. Apply any one-way distillation map to $\rho^{\otimes N}$ and a separable competitor. If the output is within half trace distance $t$ of $\Phi_M$, its projection onto $\Phi_M$ succeeds with probability at least $1-t$; every separable output succeeds with probability at most $1/M$. Binary relative entropy and data processing give $\ER(\rho^{\otimes N})\ge(1-t)\log_2M-h_2(t)$. Divide by $N$, let $t\to0$, and optimize the rate. The limit defining $\ER^\infty$ exists by subadditivity. Approximate hardware returns are taken at fixed strategy dimension with the entropy budgets of Section~\ref{sec:model}.
+
+Together with $w\ge0$,~\eqref{eq:firstreturn} and~\eqref{eq:secondreturn} give
+\[
+ w\ge\max\{0,2(d_G-q)-c,d_G-q\}=F(d_G;q,c).
+\]
+
+For achievability choose a successful pure strategy of entropy $E$. Form it unitarily and use retained measurement pointers and pure answer blanks. Copy local question labels into working flags if desired. The retained average state $\sigma$ is a mixture of at most $|X||Y|K$ pure branches. Pinching and finite question mixing give
+\[
+ S(\sigma)\le B_G,\qquad s:=S(\sigma_A)\le E+B_G.
+\]
+Coherently compress Alice's $N$ copies to $N(s+\delta)$ qubits while preserving correlations with Bob and the referee. Here is the needed compression argument~\cite{schumacher}. In an eigenbasis of $\sigma_A$, the i.i.d. typical strings have probability tending to one and number at most $2^{N(s+\delta)}$. A unitary moves their span into that many qubits with the remaining hardware blank. The gentle projection estimate makes the joint error tend to zero. The atypical branch can be retained and erased with $o(N)$ entropy cost at fixed dimension. Let $N\to\infty$ and then $\delta\downarrow0$.
+
+Send $N\min(q,s)+o(N)$ compressed qubits. Dephase and send a further $Nt+o(N)$ bits, where $t=\min(c,(s-q)_+)$. Alice's remaining register $L$ has logarithmic dimension at most $N(s-q-t)_++o(N)$. Dephasing adds at most $Nt+o(N)$ to global entropy. Araki--Lieb gives
+\[
+ S(L)+S(B_{\rm final})\le2S(L)+S(LB_{\rm final}).
+\]
+Both parties can erase their own marginals. Their work per play is at most
+\[
+ 2(s-q-t)_++S(\sigma)+t=F(s;q,c)+S(\sigma).
+\]
+Add $\log_2K$ for the answer blanks. Because $F$ is nondecreasing and $2$-Lipschitz in $s$, the total is at most $F(E;q,c)+4B_G$. Transfers are ownership transfers of registers; empty slots are pure blanks. A fixed inventory can instead be maintained by swapping into blank receiving slots and charging and returning those slots. Take the infimum over $E$. The same Lipschitz bound and the two resource estimates in Corollary~\ref{cor:sharp} prove~\eqref{eq:returnsharp}.
+\end{proof}
+
+\paragraph{Consequences of the deadline.}
+With $q=0$, unlimited classical communication leaves a cost at least $d_G$. Returning Bob's device to another processor on Bob's side of the cut changes neither bound. A finite reunion delay also leaves the joint upper bound intact if independent strategy buffers may survive until reunion: a block of $r$ pure strategies leaves at most $K^r$ flagged pure branches, so joint erasure and answer preparation together cost at most $2r\log_2K$. Storage increases with the delay. If reset is required first, that construction is inadmissible.
+
+For partial return, bounded work requires $(d_G-q)_+=O(1)$, even with unlimited $c$. In this block model $(E_G-q)_+=O(1)$ suffices. The sharp family leaves an $O_G(\log L)$ uncertainty window between these conditions;~\eqref{eq:returnsharp} alone does not turn its bounded leading term into bounded actual work. A fixed classical answer carrier can save at most its entropy, and a coherent carrier at most twice its logarithmic dimension, by mutual-information bounds. Thus fixed output alphabets cannot supply diverging quantum return capacity. Serial schedules that forbid compression require their own upper-bound analysis.

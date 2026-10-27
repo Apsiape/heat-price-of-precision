@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "Please cite the paper; this repository supplies its LaTeX source and its verification scripts."
+type: software
+title: "The heat price of precision"
+version: 1.0.0
+date-released: 2026-10-27
+repository-code: "https://github.com/Apsiape/heat-price-of-precision"
+authors:
+  - family-names: Douglas
+    given-names: Seth
+  - family-names: Mghirbi
+    given-names: Nidhal
+license:
+  - CC-BY-4.0
+  - MIT
+keywords:
+  - nonlocal games
+  - thermodynamics
+  - entanglement
+  - quantum communication
+  - erasure
+preferred-citation:
+  type: generic
+  title: "The heat price of precision"
+  authors:
+    - family-names: Douglas
+      given-names: Seth
+    - family-names: Mghirbi
+      given-names: Nidhal
+  year: 2026
+  version: 1.0.0
+  notes: "Preprint. Text CC BY 4.0; code MIT; see RIGHTS.md."

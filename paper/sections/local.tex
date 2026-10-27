@@ -1,0 +1,64 @@
+\section{Local reset and quantum reunion}\label{sec:local}
+\begin{theorem}[\proved: the local correlation price]\label{thm:local}
+For every finite game and attainable loss,
+\begin{gather}
+ C_G(\eps)\le w_{\rm local,G}(\eps)\le C_G(\eps)+2\log_2K,\label{eq:local}\\
+ 2d_G(\eps)\le C_G(\eps)\le2E_G(\eps)\le2\log_2D_G(\eps).
+ \label{eq:sandwich}
+\end{gather}
+Moreover $0\le w_{\rm joint,G}(\eps)\le2\log_2K$.
+\end{theorem}
+\begin{proof}
+For degenerate endpoints the entropy balance, Landauer's bound~\cite{landauer} in general form, is $w\ge S_{\rm in}-S_{\rm out}$. Reversible formation of a known state from a pure blank costs $-S(\rho)$; reversible reset costs $S(\rho)$. These are the asymptotic erasure primitives of~\cite[Corollary 2 and Appendix D]{delrio}, with their lower bounds supplied by the entropy balance.
+
+Formation gives $w_{\rm prep}\ge-S(AB)$. At fixed Alice question $x$, her device and thermal answer port start with entropy $S(A)+\log_2m$ and end with a pure device and a classical answer of entropy $H(a|x)$. The answer can remain in the entropy ledger after it leaves; later maps act trivially on it. Alice's bath is independent of her marginal, so
+\[
+ w_A(x)\ge S(A)+\log_2m-H(a|x).
+\]
+Bob obeys the corresponding inequality. Their sum with formation is at least
+\[
+ I(A:B)+\log_2K-H(a|X)-H(b|Y)\ge I(A:B).
+\]
+The same calculation applies to blocks. This proves the first lower bound.
+
+For the upper bound, reversibly form $\rho_{AB}$ and pay $\log_2K$ for pure answer blanks. For a POVM $M^x$, use the isometry $V_x=\sum_a\sqrt{M_a^x}\otimes\ket a_P$ with a retained pointer $P$. Copy $P$ to the answer port and release the copy. The retained state is $V_x\rho_AV_x^*$ dephased in $m$ pointer values. Pinching is an average of $m$ phase unitaries, so its entropy is at most $S(A)+\log_2m$. Erase that state locally. Bob's cost is at most $S(B)+\log_2n$. The total is at most $I(A:B)+2\log_2K$. All isometries extend to square unitaries on pure working ancillas, included in the reset.
+
+Here is a proof of $2\ED(\rho)\le I(A:B)_\rho$. On $N$ copies, combine Alice's part of a one-way distillation protocol into an instrument with output $A'Z$, where $Z$ is the classical message. Data processing and the chain rule give
+\[
+ NI(A:B)\ge I(A'Z:B^N)\ge\sum_zp_z I(A':B^N)_z
+ \ge2\sum_zp_z[S(B^N)_z-S(A'B^N)_z].
+\]
+The last inequality is Araki--Lieb. The sum is the coherent information $J(A'\rangle B^NZ)$. Bob's controlled channel cannot increase coherent information. For an output tending to $M_N$ Bell pairs, entropy continuity gives $J(A'\rangle B')\ge M_N-o(N)$. Thus $I(A:B)/2$ bounds every one-way distillation rate. For a pure strategy $I=2S(A)$. If a mixed state of local dimensions at most $D$ succeeds, some pure component succeeds with the same measurements, since score is affine in the state. Its entropy is at most $\log_2D$. These observations prove~\eqref{eq:sandwich}.
+
+For joint reset choose a successful pure component, form it by a global unitary, and use the coherent measurement implementation above. At fixed $x,y$ the residual is an orthogonally flagged mixture
+\[
+ \sum_{ab}p(ab|xy)\ket{\phi_{ab}}\bra{\phi_{ab}}\otimes\ket{ab}\bra{ab}_P.
+\]
+After reunion, a unitary controlled by the joint pointer maps each normalized $\phi_{ab}$ to the same product blank. Only the pointer remains. Its erasure costs at most $\log_2K$; answer blanks cost the other $\log_2K$. Question controls permit the required choice of unitary. Nonnegative total work follows from the entropy balance for the complete cycle: its boundary term is $\log_2K-H(ab|XY)\ge0$.
+\end{proof}
+
+\begin{corollary}[\proved: the sharp precision law]\label{cor:sharp}
+Put $L=\log_2(1/\eps)$. Suppose, for small enough $\eps$,
+\[
+ E_G(\eps)\le\alpha L+a,\qquad
+ d_G(\eps)\ge\alpha L-b\log_2L-c.
+\]
+Then
+\begin{equation}
+ 2\alpha L-2b\log_2L-2c
+ \le w_{\rm local,G}(\eps)
+ \le2\alpha L+2a+2\log_2K.\label{eq:sharp}
+\end{equation}
+Consequently $w_{\rm local,G}=2\alpha L+O_G(\log L)$, whereas $w_{\rm joint,G}=O_G(1)$.
+The set
+\[
+ \mathcal S=\left\{\frac12\sum_{m\ {\rm even}}\frac{n_m}{\log_2m}:
+ n_m\in\Z_{\ge0},\ 0<\sum_m n_m<\infty\right\}
+\]
+is realized by fixed finite games. The work coefficients $2\mathcal S$ are dense in $(0,\infty)$ and include transcendental numbers.
+\end{corollary}
+\begin{proof}
+Substitute the two inequalities into Theorem~\ref{thm:local}. The existence of games with those inequalities for every $\alpha\in\mathcal S$ is~\cite[Theorem 11.9(a,b)]{precision}; density and transcendence are~\cite[Corollary 11.11]{precision}. Multiplication by two preserves both properties. In particular the upper correction is bounded; the lower correction need only be $O(\log L)$. No inference from a formation bound to a distillable-entanglement bound is used.
+\end{proof}
+
+The same $d_G$ and $D_G$ appear in both reset schedules. If $d_G$ diverges, one work profile diverges and the other stays bounded. Hence these game resources alone cannot determine operating work without a reset schedule.

@@ -1,0 +1,45 @@
+\section{Weighted Weyl tests for several observers}\label{app:weighted}
+This appendix evaluates Weyl-relation defects against a family of weighted probes. Probe entropy alone is not identified with usable entanglement.
+
+\begin{theorem}[\proved: the observer-family defect]\label{thm:weighted}
+Fix $q\in\C$ with $|q|=1$ and an integer $d\ge1$. Let $\mathcal K$ be a compact convex set of density matrices on $\C^d$, containing a positive-definite matrix. Define inverse trace as $+\infty$ on singular matrices and set
+\[
+ S_{\mathcal K}=\min_{\sigma\in\mathcal K}\Tr\sigma^{-1},\qquad
+ \delta=\Arg(q^d)\in(-\pi,\pi].
+\]
+For unitary gates $U,V$, put $C=qV^*U^*VU$ and $H=-i\operatorname{Log}C$, with principal eigenphases in $(-\pi,\pi]$. Then
+\[
+ \inf_{U,V}\max_{\rho\in\mathcal K}\Tr\rho H^2
+       =\frac{\delta^2}{S_{\mathcal K}}.
+\]
+With $q=e^{2\pi i\alpha}$ for $\alpha\in\R$ and $\tau_d=\norm{d\alpha}_{\R/\Z}$,
+\begin{equation}
+ \frac{4\tau_d}{\sqrt{S_{\mathcal K}}}
+ \le\inf_{U,V}\max_{\rho\in\mathcal K}\norm{(UV-qVU)\sqrt\rho}_2
+ \le\frac{2\pi\tau_d}{\sqrt{S_{\mathcal K}}}.\label{eq:weighted}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Since $|q|=1$, $C$ is unitary and $H$ is Hermitian. Let $\sigma_*$ minimize inverse trace. It is positive definite, since inverse trace diverges at singular boundaries. The determinant forces $\Tr H=\delta+2\pi k$. Weighted Hilbert--Schmidt Cauchy--Schwarz gives
+\[
+ |\Tr H|^2\le(\Tr\sigma_*^{-1})(\Tr\sigma_*H^2),
+\]
+so the worst observer cost is at least $\delta^2/S_{\mathcal K}$. First-order optimality in the direction $\rho-\sigma_*$ gives
+\[
+ -\Tr\sigma_*^{-2}(\rho-\sigma_*)\ge0,
+ \qquad\Tr\rho\sigma_*^{-2}\le S_{\mathcal K}.
+\]
+Consequently $H_*:=\delta\sigma_*^{-1}/S_{\mathcal K}$ has $\Tr H_*=\delta$, $\norm{H_*}\le|\delta|\le\pi$, and worst cost at most $\delta^2/S_{\mathcal K}$.
+
+It remains to realize $H_*$. Every $W\in SU(d)$ is a unitary commutator. Diagonalize $W=S\operatorname{diag}(w_j)S^*$, choose cyclic phases $a_j$ with $a_j/a_{j-1}=w_j$ (possible because $\prod_jw_j=1$), and let $T\ket j=\ket{j+1}$. For $A=\operatorname{diag}(a_j)$, $ATA^*T^*=\operatorname{diag}(w_j)$. Thus $U=ST^*S^*$ and $V=SA^*S^*$ satisfy $V^*U^*VU=W$. Apply this with $W=q^{-1}e^{iH_*}$, whose determinant is one. This attains the bound, including $d=1$.
+
+Finally $UV-qVU=UV(I-C)$, and on principal phases
+\[
+ \frac4{\pi^2}H^2\le(I-C)^*(I-C)\le H^2.
+\]
+Take weighted traces, maxima and infima and use $|\delta|=2\pi\tau_d$ to obtain~\eqref{eq:weighted}.
+\end{proof}
+
+If $I/d\in\mathcal K$, then $S_{\mathcal K}=d^2$, since $\Tr\sigma^{-1}\ge d^2$ for every density matrix. Thus testing all cyclic translates of a diagonal probe restores the uniform optimum. If $\mathcal K=\{\rho\}$,~\eqref{eq:weighted} gives the single-probe bound.
+
+The dimension envelope needs arithmetic hypotheses. For badly approximable $\alpha$, $\tau_d\ge a/d$; Dirichlet's pigeonhole bound supplies $d\le Q$ with $\tau_d\le1/Q$, hence also $d\ge aQ$. Equation~\eqref{eq:weighted} then gives uniform-probe dimension $\Theta(e^{-1/2})$. Irrationality alone is insufficient. For a truncated thermal probe with weights proportional to $e^{-\beta j}$, $j=0,\ldots,d-1$, and fixed $\beta>0$, inverse trace is $\Theta_\beta(e^{\beta d})$. Under the uniform asymptotic condition $-\ln\tau_d=o(d)$,~\eqref{eq:weighted} gives $\ln(1/e_d)=\beta d/2+o(d)$, hence the least dimension is $(2/\beta)\ln(1/e)+o(\ln(1/e))$. Neither envelope follows from irrationality without the stated qualification.

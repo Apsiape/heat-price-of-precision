@@ -1,0 +1,60 @@
+\section{Several phase controls sharing one shift}\label{app:multi}
+Consider unitary controls $U_1,\ldots,U_m,V$ with exact bipartite matching. Their tested squared defect in marginal state $\rho$ is
+\[
+ \sum_{j=1}^m\norm{(U_jV-e^{2\pi i\alpha_j}VU_j)\sqrt\rho}_2^2\le e^2.
+\]
+No extra exact relation is imposed among the $U_j$.
+
+\begin{theorem}[\proved: a multiphase price]\label{thm:multi}
+The minimum defect on a uniform $d$-dimensional probe is
+\begin{equation}
+ \ell_d=4\sum_{j=1}^m\sin^2\left(\frac{\pi\norm{d\alpha_j}_{\R/\Z}}d\right).\label{eq:ell}
+\end{equation}
+The exact-matching entanglement and correlation prices are
+\begin{align}
+ E_m(e)&=\inf_{\sum_rp_r\ell_{d_r}\le e^2}\sum_rp_r\log_2d_r,\label{eq:multiED}\\
+ C_m(e)&=\inf_{t\ell_d+(1-t)\ell_{d'}\le e^2}
+     [h_2(t)+2t\log_2d+2(1-t)\log_2d'],\label{eq:multiMI}
+\end{align}
+where allocations are finite probabilities and $0\le t\le1$. For $\theta=2^{1/(m+1)}$ and $\alpha_j=\theta^j$,
+\begin{gather}
+ D_m(e)=\Theta_m(e^{-m/(m+1)}),\qquad
+ E_m(e)=\frac m{m+1}\log_2(1/e)+O_m(1),\\
+ C_m(e)=\frac{2m}{m+1}\log_2(1/e)+O_m(1).
+\end{gather}
+Here $D_m$ is the least uniform-probe dimension. The same minimum dimension is possible among exactly matched finite strategies.
+\end{theorem}
+\begin{proof}
+For one relation, let $\theta_k\in(-\pi,\pi]$ be the principal eigenphases of its corrected commutator. Their sum is the forced determinant phase modulo $2\pi$. Set $a=2\pi\norm{d\alpha}_{\R/\Z}\le\pi$. Taking absolute values and then trimming their sum to $a$ cannot increase $\sum_k(1-\cos\theta_k)$. For $u,v\ge0$ with $u+v\le\pi$,
+\[
+ (1-\cos u)+(1-\cos v)\ge2\left(1-\cos\frac{u+v}2\right),
+\]
+because $\cos u+\cos v=2\cos((u+v)/2)\cos((u-v)/2)$. Repeated pair averaging therefore minimizes the sum at all phases equal to $a/d$. The uniform squared norm is at least $4\sin^2(a/(2d))$.
+
+All these minima have a common construction. Take nearest integers $p_j$ to $d\alpha_j$ and set $V\ket k=\ket{k+1\bmod d}$ and $U_j\ket k=e^{2\pi ip_jk/d}\ket k$. Then $U_jV=e^{2\pi ip_j/d}VU_j$, giving~\eqref{eq:ell}. Every irreducible sector of dimension $d$ has defect at least $\ell_d$; the construction on $\Phi_d$ attains it, whether or not those controls are irreducible. Theorem~\ref{thm:sectors} gives the lower bounds in~\eqref{eq:multiED}--\eqref{eq:multiMI}, and these clock strategies and their flagged mixtures give the upper bounds. Two-sector sufficiency follows from the same theorem. A mixture with all sector dimensions at most $D$ has average defect at least the smallest $\ell_d$ for $d\le D$, which proves the dimension assertion.
+
+For the exponents put $n=m+1$ and $M(x_0,\ldots,x_m)=(x_1,\ldots,x_m,2x_0)$. Its irreducible characteristic polynomial is $x^n-2$, by Eisenstein, and $w=(1,\theta,\ldots,\theta^m)$ satisfies $Mw=\theta w$. Given $d\ge1$, choose nearest integers $p_j$ and set $v=(d,p_1,\ldots,p_m)=dw+z$, where $\norm z\le\sqrt m\,\Delta$ and $\Delta=\max_j\norm{d\theta^j}_{\R/\Z}$. The integer determinant $\det[v,Mv,\ldots,M^mv]$ is nonzero. Otherwise a rational polynomial of degree at most $m$ annihilates $v$; its Bezout identity with $x^n-2$, applied to $M$, forces $v=0$.
+
+Subtract $\theta^kv$ from column $k$ for $1\le k\le m$. The remaining column is $(M^k-\theta^kI)z$, of norm $O_m(\Delta)$, while the first column is $O_m(d)$. Hadamard's inequality yields
+\begin{equation}
+ 1\le|\det[v,Mv,\ldots,M^mv]|\le C_m d\Delta^m,
+ \qquad \Delta\ge a_m d^{-1/m}.\label{eq:perron}
+\end{equation}
+This is the classical algebraic simultaneous-approximation mechanism associated with Perron; the determinant proof is included to specify the needed input.
+
+Pigeonholing $Q^m+1$ orbit points in $Q^m$ cubes gives a denominator $d\le Q^m$ with $\Delta\le1/Q$. Equation~\eqref{eq:perron} forces $d\ge(a_mQ)^m$. The inequalities $2x/\pi\le\sin x\le x$ on $[0,\pi/2]$ give, respectively,
+\[
+ \sqrt{\ell_d}\ge4a_m d^{-1-1/m},\qquad
+ \sqrt{\ell_d}\le2\pi\sqrt m\,\Delta/d\le C'_mQ^{-m-1}
+\]
+for that denominator. Choose $Q$ proportional to $e^{-1/(m+1)}$ for the matching dimension bound. Finally $\ell_d\ge b_md^{-r}$ with $r=2+2/m$ implies
+\[
+ \sum_jp_j\log_2d_j
+ \ge\frac1r\left(\log_2b_m-\sum_jp_j\log_2\ell_{d_j}\right)
+ \ge\frac1r\log_2\frac{b_m}{\sum_jp_j\ell_{d_j}}
+ \ge\frac m{m+1}\log_2(1/e)+O_m(1).
+\]
+Jensen's inequality is used in the middle step. The single-sector construction matches it, and~\eqref{eq:sectorbounds} gives the correlation price.
+\end{proof}
+
+For the cube-root pair $(\sqrt[3]2,\sqrt[3]4)$ the three coefficients are $2/3$, $2/3$, and $4/3$. Reversible formation followed by separate reset, with no game transcript, costs exactly the prepared state's mutual information. Thus the last coefficient is also a cyclic local-reset correlation-work coefficient for this exactly matched calibration task. A coherent comparison of $U_jV$ and $e^{2\pi i\alpha_j}VU_j$ has minus-port probability one quarter of the tested squared norm. This predicts a gate-calibration curve; imposing exact matching experimentally and performing reversible reset remain part of the implementation problem. It is not an unrestricted nonlocal-game demand theorem.

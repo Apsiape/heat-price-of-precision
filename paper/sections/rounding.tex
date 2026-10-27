@@ -1,0 +1,45 @@
+\section{Approximate invariance and its limit}\label{app:rounding}
+\begin{proposition}[\proved: the entropy precision gap]\label{prop:rounding}
+Let $U_s$ be free unitary generators, and let a finite word list $\mathcal W$ contain every relation to be tested. Suppose
+\[
+ \norm{[U_s,\sqrt\rho]}_2\le e,\qquad
+ \norm{(w(U)-\zeta_wI)\sqrt\rho}_2\le e,\quad |\zeta_w|=1.
+\]
+Define sector loss by the unnormalized sum of squared word defects, and let $s(e)$ be the least feasible $S(\rho)$. For $0<e\le1$,
+\[
+ f(C_{\mathcal W}e)\le s(e)\le f(e^2)+1,\qquad
+ C_{\mathcal W}=2|\mathcal W|+4\sum_{w\in\mathcal W}|w|^2.
+\]
+No additional exact relations beyond unitarity are assumed.
+\end{proposition}
+\begin{proof}
+In an eigenbasis of $\rho$ with eigenvalues $\lambda_i$, put $P_t=1_{\{\rho\ge t\}}$ and $r(t)=\rank P_t$. Then $\rho=\int P_tdt$ and $\int r(t)dt=1$. For a unitary $U$,
+\begin{align*}
+ \int\norm{(I-P_t)UP_t}_2^2dt
+ &=\sum_{ij}(\lambda_j-\lambda_i)_+|U_{ij}|^2\\
+ &=\tfrac12\sum_{ij}|\lambda_j-\lambda_i||U_{ij}|^2
+ \le\norm{[U,\sqrt\rho]}_2.
+\end{align*}
+The second equality uses the vanishing signed sum, from unitarity. For the inequality factor the eigenvalue difference into the difference and sum of their square roots, and use Cauchy--Schwarz; the squared sum factor has total at most four.
+
+Replace $P_tU_sP_t$ by a unitary polar completion $W_{s,t}$ on $P_t\mathcal H$. Its singular values $a_i\le1$ obey $\sum_i(1-a_i)^2\le\sum_i(1-a_i^2)$. Including leakage outside $P_t$ gives
+\[
+ \norm{U_sP_t-W_{s,t}P_t}_2^2\le2\norm{(I-P_t)U_sP_t}_2^2.
+\]
+The corresponding inverse-letter estimate follows from the same singular values and equality of forward and backward leakage traces. Telescoping a word of length $L$ and using Cauchy--Schwarz over its $L$ terms therefore gives integrated squared error at most $2L^2e$. The original word residual has integrated square at most $e^2$. Squaring their sum bounds the rounded word defect by $2e^2+4L^2e$ after integration.
+
+Choose the uniform state $P_t/r(t)$ with probability $r(t)dt$. Entropy concavity gives $S(\rho)\ge\int r(t)\log_2r(t)dt$. The rounded controls define finite representations of the free unitary algebra; decomposing them into irreducibles preserves tracial loss and lowers the average logarithmic dimension. The spectral projections change only finitely many times, so this is a finite allocation. Its aggregate loss is at most $C_{\mathcal W}e$ and its cost at most $S(\rho)$. This proves the lower bound. For the upper bound choose an allocation approaching $f(e^2)$ with at most two sectors and put $\rho=\bigoplus_jp_jI_{n_j}/n_j$. It commutes exactly with every control, each individual squared defect is at most $e^2$, and $S(\rho)=H(p)+\sum_jp_j\log_2n_j\le1+f(e^2)+o(1)$.
+\end{proof}
+
+\begin{proposition}[\proved: fixed-control rounding can cost unbounded entropy]\label{prop:fixed}
+Let $U$ be diagonal with distinct phases, $\ket s=d^{-1/2}\sum_{k=0}^{d-1}\ket k$, $V=I+(e^{it}-1)\ket s\bra s$, and $\rho=\ket0\bra0$, where $t\notin2\pi\Z$. The only state commuting with both $U$ and $V$ is $I/d$, but
+\[
+ S(\rho)=0,\quad [U,\sqrt\rho]=0,\quad
+ \norm{[V,\sqrt\rho]}_2^2=\frac{4(1-\cos t)(d-1)}{d^2}\longrightarrow0.
+\]
+\end{proposition}
+\begin{proof}
+A matrix commuting with $U$ is diagonal. If it also commutes with $\ket s\bra s$, all its diagonal entries agree, proving the first claim. The commutator with $\ket0\bra0$ has $2(d-1)$ off-diagonal entries of modulus $|e^{it}-1|/d$, giving the formula. The same controls and their transposes have vanishing matching error on $\ket{00}$, while exact matching forces the one-dimensional invariant-vector space spanned by $\Phi_d$, by irreducibility and Schur's lemma.
+\end{proof}
+
+Thus no dimension-independent entropy guarantee can enforce exact invariance while keeping these controls. The example does not satisfy a game's obstructed relators, so it does not refute the published entanglement demand theorem. Proposition~\ref{prop:rounding} also concerns only representation-state entropy, not the one-way distillable entanglement of an arbitrary original mixed strategy. These are two separate reasons to leave the unrestricted stability extension open.
